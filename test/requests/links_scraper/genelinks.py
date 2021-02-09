@@ -22,7 +22,8 @@ def test_link(link):
     except Exception as e:
         # print(f"failed for request {link}")
         # raise SystemExit(f"failed for request {link}")
-        logging.error(f'Link does not exists or is wrongly formatted {link}')
+        logging.error(f'Link does not exists or is wrongly formatted {link}', exc_info=True)
+        # logging.error(f'Link does not exists or is wrongly formatted {link}')
 
     status_code = results.status_code if results is not None else "404"
 
