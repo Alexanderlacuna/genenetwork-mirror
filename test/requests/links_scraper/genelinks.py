@@ -12,7 +12,7 @@ from urllib.parse import urljoin
 PORT = os.environ.get("PORT", "5004")
 
 
-def test_link(link):
+def test_link(link, strict=True):
     print(f"link testing {link}")
     results = None
     try:
@@ -20,15 +20,16 @@ def test_link(link):
         results = requests.get(link, verify=False, timeout=10)
 
     except Exception as e:
-        # print(f"failed for request {link}")
-        # raise SystemExit(f"failed for request {link}")
-        logging.error(f'Link does not exists or is wrongly formatted {link}', exc_info=True)
-        # logging.error(f'Link does not exists or is wrongly formatted {link}')
+        msg = f'Link does not exists or is wrongly formatted {link}'
+        if strict:
+            raise SystemExit(msg)
+        else:
+            logging.error(msg)
+        logging.error(f'Link does not exists or is wrongly formatted {link}')
 
     status_code = results.status_code if results is not None else "404"
 
-    # print(f'the link {link} ---> {status_code}')
-    logging.info(f"the link {link} succeeded with --> {status_code}")
+    print(f'the link {link} ---> {status_code}')
 
 
 def fetch_css_links(parsed_page):
