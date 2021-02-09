@@ -15,8 +15,8 @@ def test_link(link):
         results = requests.get(link, verify=False, timeout=10)
 
     except Exception as e:
-        print(f"failed for request {link}")
-        # raise SystemExit(f"failed for request {link}")
+        # print(f"failed for request {link}")
+        raise SystemExit(f"failed for request {link}")
 
     status_code = results.status_code if results is not None else "404"
 
@@ -55,5 +55,4 @@ def scraper_for_webpage(page_url):
         test_link(link.get("href"))
 
 
-fetch_page_links("http://localhost:5004/")
-http
+fetch_page_links("http://www.genenetwork.org/")
