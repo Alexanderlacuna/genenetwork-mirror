@@ -20,12 +20,11 @@ def test_link(link, strict=True):
         results = requests.get(link, verify=False, timeout=10)
 
     except Exception as e:
-        msg = f'Link does not exists or is wrongly formatted {link}'
+        msg = f'FAILED:{link} does not exists or is wrongly formatted'
         if strict:
             raise SystemExit(msg)
         else:
             logging.error(msg)
-        logging.error(f'Link does not exists or is wrongly formatted {link}')
 
     status_code = results.status_code if results is not None else "404"
 
