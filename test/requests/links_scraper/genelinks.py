@@ -80,3 +80,7 @@ def fetch_page_links(page_url):
     fetch_script_tags(parsed_page=parsed_page)
     fetch_css_links(parsed_page=parsed_page)
     fetch_html_links(parsed_page=parsed_page)
+
+
+
+fetch_page_links("http://localhost:5004/")
