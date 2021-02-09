@@ -39,15 +39,15 @@ jobs:
         mysql -u root -e "CREATE USER 'gn2'@'localhost' IDENTIFIED BY 'mysql_password';"
         mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'gn2'@'localhost';FLUSH PRIVILEGES;"
 
-    - name: Run the unit tests
-      run: |
-        env GN2_PROFILE=/gn2-profile \
-        TMPDIR=/tmp SERVER_PORT=5004 \
-        WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG \
-        GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
-        etc/default_settings.py -c -m unittest discover -v
+#     - name: Run the unit tests
+#       run: |
+#         env GN2_PROFILE=/gn2-profile \
+#         TMPDIR=/tmp SERVER_PORT=5004 \
+#         WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG \
+#         GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
+#         etc/default_settings.py -c -m unittest discover -v
     - name: Automated link checker
       run: |
-        env SERVER_PORT=5013 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GN2_PROFILE=/gn2-profile ./bin/genenetwork2 ./etc/default_settings.py -c  ./test/requests/links_scraper/genelinks.py
+        env SERVER_PORT=5004 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GN2_PROFILE=/gn2-profile ./bin/genenetwork2 ./etc/default_settings.py -c  /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
 
       
