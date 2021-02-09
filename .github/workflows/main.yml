@@ -48,6 +48,6 @@ jobs:
         etc/default_settings.py -c -m unittest discover -v
     - name: Automated link checker
       run: |
-        env SERVER_PORT=5013 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GN2_PROFILE=/gn2-profile ./bin/genenetwork2 ./etc/default_settings.py -c  /test/requests/links_scraper/genelinks.py
+        env SERVER_PORT=5013 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GN2_PROFILE=/gn2-profile ./bin/genenetwork2 ./etc/default_settings.py -c  /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
 
       
