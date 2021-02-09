@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 
 
 def test_link(link):
-    print(f"link testing {link}")
+    print(f"test for:{link}")
     results = None
     try:
 
