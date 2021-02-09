@@ -39,16 +39,16 @@ jobs:
         mysql -u root -e "CREATE USER 'gn2'@'localhost' IDENTIFIED BY 'mysql_password';"
         mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'gn2'@'localhost';FLUSH PRIVILEGES;"
 
-    - name: Start genenetwork2 on the background
-      run: |
-        env GN2_PROFILE=/gn2-profile \
-        TMPDIR=/tmp SERVER_PORT=5004 \
-        WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG \
-        GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
-        etc/default_settings.py&
+    # - name: Start genenetwork2 on the background
+    #   run: |
+    #     env GN2_PROFILE=/gn2-profile \
+    #     TMPDIR=/tmp SERVER_PORT=5004 \
+    #     WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG \
+    #     GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
+    #     etc/default_settings.py&
 
     - name: Automated link checker
       run: |
-        python  /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
+        env GN2_PROFILE=/home/kabui/opt/python3-genenetwork2 TEMPDIR=/home/kabui/tmp SERVER_PORT=5004 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/home/kabui/data/genotype_files /home/kabui/project3/genenetwork2/bin/genenetwork2 /home/kabui/project3/genenetwork2/etc/default_settings.py -c /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
 
       
