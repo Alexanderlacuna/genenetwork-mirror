@@ -37,7 +37,7 @@ def fetch_page_links(page_url):
 
         if re.match(r"^/", link_url):
 
-            full_path = urljoin('http://localhost:5004/', link_url)
+            full_path = urljoin('http://www.genenetwork.org/', link_url)
         elif re.match(r'^http://', link_url):
             full_path = link_url
 
