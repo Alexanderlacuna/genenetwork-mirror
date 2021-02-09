@@ -20,7 +20,6 @@ def test_link(link, strict=True):
         results = requests.get(link, verify=False, timeout=10)
 
     except Exception as e:
-        msg =
         if strict:
             raise SystemExit(
                 "The link does not exists or is wrongly formatted")
