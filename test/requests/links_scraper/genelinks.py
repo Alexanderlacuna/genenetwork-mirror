@@ -37,7 +37,7 @@ def fetch_page_links(page_url):
 
         if re.match(r"^/", link_url):
 
-            full_path = urljoin('http://www.genenetwork.org/', link_url)
+            full_path = urljoin('http://localhost:5004/', link_url)
         elif re.match(r'^http://', link_url):
             full_path = link_url
 
@@ -55,4 +55,4 @@ def scraper_for_webpage(page_url):
         test_link(link.get("href"))
 
 
-fetch_page_links("http://www.genenetwork.org/")
+fetch_page_links("http://localhost:5004/")
