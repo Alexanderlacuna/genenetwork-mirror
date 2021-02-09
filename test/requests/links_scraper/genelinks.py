@@ -16,6 +16,7 @@ def test_link(link):
 
     except Exception as e:
         print(f"failed for request {link}")
+        raise SystemExit(f"failed for request {link}")
 
     status_code = results.status_code if results is not None else "404"
 
