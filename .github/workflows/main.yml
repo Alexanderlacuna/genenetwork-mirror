@@ -47,8 +47,10 @@ jobs:
         GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
         etc/default_settings.py -c -m unittest discover -v
 
-    - name: Automated link checker
+    - name: Start Genenetwork on the Background
       run: |
-        env GN2_PROFILE=/gn2-profile TMPDIR=/tmp SERVER_PORT=5004 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/home/kabui/data/genotype_files/  bin/genenetwork2 etc/default_settings.py -c /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
-
+        env GN2_PROFILE=/gn2-profile TMPDIR=/tmp SERVER_PORT=5004 WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py&
+    - name: Run automated  tests
+      run: |
+        env GN2_PROFILE=/gn2-profile TMPDIR=/tmp  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py -c /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py
       
