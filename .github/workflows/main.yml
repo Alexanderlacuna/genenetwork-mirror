@@ -53,7 +53,7 @@ jobs:
     - name: Run automated  tests
       run: |
         env GN2_PROFILE=/gn2-profile \
-        /home/kabui/project3/genenetwork2/bin/genenetwork2 \
-        /home/kabui/project3/genenetwork2/etc/default_settings.py -c \
+        /bin/genenetwork2 \
+         etc/default_settings.py -c \
          $PYTHON_PATH /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
       
