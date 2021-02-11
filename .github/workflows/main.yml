@@ -58,8 +58,9 @@ jobs:
       
     - name: Setup python
       uses: actions/setup-python@v2
-      with: 
-        python-version:3.8
+      with:
+        python-version: 3.8  
+#         python-version:3.8
 
     - name: Run automated tests
       run: |
