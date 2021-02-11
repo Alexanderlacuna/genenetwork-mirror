@@ -52,5 +52,5 @@ jobs:
         env GN2_PROFILE=/gn2-profile TMPDIR=/tmp SERVER_PORT=5004  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py&
     - name: Run automated  tests
       run: |
-        env GN2_PROFILE=/gn2-profile TMPDIR=/tmp TEST_PATH=test/requests/links_scraper/genelinks.py  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py  -c /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
+        env GN2_PROFILE=/gn2-profile  python /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
       
