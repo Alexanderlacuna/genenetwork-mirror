@@ -57,6 +57,8 @@ jobs:
     #     env GN2_PROFILE=/gn2-profile TMPDIR=/tmp TEST_PATH=test/requests/links_scraper/genelinks.py  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py  -c /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
       
     - name: Run automated tests
+      uses: actions/setup-python@v2
+
       with:
         python-version: '3.x'
 
