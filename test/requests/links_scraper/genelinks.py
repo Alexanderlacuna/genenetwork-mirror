@@ -11,8 +11,10 @@ from urllib.parse import urljoin
 
 PORT = os.environ.get("PORT", "5004")
 
+broken_links =set()
 
-def test_link(link, strict=True):
+
+def test_link(link):
     print(f"link testing {link}")
     results = None
     try:
@@ -20,15 +22,14 @@ def test_link(link, strict=True):
         results = requests.get(link, verify=False, timeout=10)
 
     except Exception as e:
-        if strict:
-            raise SystemExit(
-                "The link does not exists or is wrongly formatted")
+        status_code = 408
         else:
             logging.error(f"FAILED:{link} does not exists or is wrongly formatted")
 
-    status_code = results.status_code if results is not None else "404"
+    status_code = results.status_code if results is not None else 404
 
-    print(f'the link {link} ---> {status_code}')
+    if status_code >403:
+        broken_links(link)
 
 
 def fetch_css_links(parsed_page):
@@ -89,4 +90,4 @@ def fetch_page_links(page_url):
     fetch_html_links(parsed_page=parsed_page)
 
 
-fetch_page_links(f"http://localhost:{PORT}/")
+fetch_page_links(f"http://localhost:5004/")
