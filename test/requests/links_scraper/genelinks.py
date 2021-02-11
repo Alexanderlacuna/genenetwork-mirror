@@ -23,8 +23,6 @@ def test_link(link):
 
     except Exception as e:
         status_code = 408
-        else:
-            logging.error(f"FAILED:{link} does not exists or is wrongly formatted")
 
     status_code = results.status_code if results is not None else 404
 
@@ -89,5 +87,11 @@ def fetch_page_links(page_url):
     fetch_css_links(parsed_page=parsed_page)
     fetch_html_links(parsed_page=parsed_page)
 
+    # return broken_links
+
 
 fetch_page_links(f"http://localhost:5004/")
+# if len(broken_links)>=1:
+#     for link in broken_links:
+#         print(link)
+
