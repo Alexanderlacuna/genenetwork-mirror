@@ -52,5 +52,8 @@ jobs:
         env GN2_PROFILE=/gn2-profile TMPDIR=/tmp SERVER_PORT=5004  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py&
     - name: Run automated  tests
       run: |
-        env GN2_PROFILE=/gn2-profile  python /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
+        env GN2_PROFILE=/gn2-profile \
+        /home/kabui/project3/genenetwork2/bin/genenetwork2 \
+        /home/kabui/project3/genenetwork2/etc/default_settings.py -c \
+         $PYTHON_PATH /__w/genenetwork-mirror/genenetwork-mirror/test/requests/links_scraper/genelinks.py 
       
