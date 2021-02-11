@@ -47,6 +47,11 @@ jobs:
         GENENETWORK_FILES=/genotype_files/ bin/genenetwork2 \
         etc/default_settings.py -c -m unittest discover -v
 
+
+    - name: Set up Python
+      with:
+        python-version: '3.x'
+
     - name: Start Genenetwork on the Background
       run: |
         env GN2_PROFILE=/gn2-profile TMPDIR=/tmp SERVER_PORT=5004  WEBSERVER_MODE=DEBUG LOG_LEVEL=DEBUG GENENETWORK_FILES=/genotype_files/  bin/genenetwork2 etc/default_settings.py&
