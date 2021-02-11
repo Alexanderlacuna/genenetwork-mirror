@@ -27,7 +27,7 @@ def test_link(link):
     status_code = results.status_code if results is not None else 404
 
     if status_code >403:
-        broken_links(link)
+        broken_links.add(link)
 
 
 def fetch_css_links(parsed_page):
